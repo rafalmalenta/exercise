@@ -13,7 +13,7 @@ module.exports = {
   plugins:  [
      new HtmlWebpackPlugin({
       template: './src/index.html',
-      inject: false,
+      inject: true,
     }),
     new MiniCssExtractPlugin({filename: "assets/style.min.css", }),   
       ],
