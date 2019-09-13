@@ -1,8 +1,7 @@
 export default function AssignStylesToGDPR(element){
     
     var GDPRCSS = element.style;
-
-    GDPRCSS.border = "3px solid red"
+   
     GDPRCSS.top = "50%";
     GDPRCSS.left = "50%";
     GDPRCSS.display = "block";

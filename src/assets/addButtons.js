@@ -1,4 +1,6 @@
-export default function addbuttons(element){
+import handleClick from "./handleClick";
+
+export default function addbuttons(GDPR){
     var acceptButton = document.createElement("button");
     acceptButton.value= "accept";
     var cancelButton = document.createElement("button");
@@ -16,15 +18,14 @@ export default function addbuttons(element){
     buttonsWrapper.style.boxSizing = "border-box";
     buttonsWrapper.style.margin = "0px auto";   
     buttonsWrapper.append(acceptButton,cancelButton);
-    element.append(buttonsWrapper); 
+    GDPR.append(buttonsWrapper); 
     buttons.forEach((button)=>{
         button.style.width = "50%";        
     })
 
     buttons.forEach((button)=>{       
-        button.addEventListener("click",(e)=>{   
-            console.log(button);       
-            //handleClick(e.target.value);
+        button.addEventListener("click",(e)=>{                 
+            handleClick(e.target.value, GDPR);
         })
     })
 }

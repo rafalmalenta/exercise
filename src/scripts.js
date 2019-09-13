@@ -1,37 +1,27 @@
 import "./styles/style.sass";
 import renderGDPRBox from "./assets/renderGDPRBox"
-function mutationCallback (mutations,observer){
-  for (let i=0; i < mutations.length; i++){
-    for (let j=0; j < mutations[i].addedNodes.length; j++){            
-      if (mutations[i].addedNodes[j].nodeType === 1 && mutations[i].addedNodes[j].tagName === 'BODY'){                             
-          dispatchEvent(new Event("BODYReady"));               
-          observer.disconnect();
-        }
-    }
-  }
-}   
+import mutationCallback from "./assets/mutationCallback"
+
 
 (function(){   
    
     if(document.querySelector("body"))
       {
-        /*jezeli osadzimy plugin w body mutationObserver nie wykryje pojawienia się body
-         
+        /*jezeli osadzimy plugin w body, mutationObserver nie wykryje pojawienia się body
+        więc jeżeli istnieje przechodzę do renderowania GDPR
         */
         dispatchEvent(new Event("BODYReady"));
       }
     else {
+      /* Jeżeli nie istnieje czekam aż się pojawi
+      */
       var observer = new MutationObserver( mutationCallback );     
       observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
+        childList: true,// ten jeden warunek wystarczy dla znalezienia body kiedy        
       });      
-    }  
-    var div = document.createElement('div');    
-
+    }     
     
     window.addEventListener("BODYReady",function(){   
-       console.log("fire");       
-       renderGDPRBox()
+      renderGDPRBox()
       });      
 })()
