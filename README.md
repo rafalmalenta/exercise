@@ -1,4 +1,4 @@
-# my portfolio website
+# just another exercise
 1 Installation  
     a)npm install or sudo npm install - install dependencies.  
     b)npm run dev - developement mode at <http://localhost:8000/>.  
