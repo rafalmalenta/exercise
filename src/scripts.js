@@ -4,7 +4,9 @@ import mutationCallback from "./assets/mutationCallback"
 
 
 (function(){   
-   
+    window.addEventListener("BODYReady",function(){   
+      renderGDPRBox()
+      });  
     if(document.querySelector("body"))
       {
         /*jezeli osadzimy plugin w body, mutationObserver nie wykryje pojawienia się body
@@ -21,7 +23,5 @@ import mutationCallback from "./assets/mutationCallback"
       });      
     }     
     
-    window.addEventListener("BODYReady",function(){   
-      renderGDPRBox()
-      });      
+        
 })()
